@@ -1,22 +1,16 @@
 PODS:
-  - plant-detect-sdk (1.0.0)
+  - plant-detect-sdk (1.0.6)
 
 DEPENDENCIES:
-  - "plant-detect-sdk (from `git@github.com:tespkg/plant-detect-sdk-ios.git`, tag `1.0.1`)"
+  - plant-detect-sdk (from `../PlantDetect/ios/SDKOutput/`)
 
 EXTERNAL SOURCES:
   plant-detect-sdk:
-    :git: "git@github.com:tespkg/plant-detect-sdk-ios.git"
-    :tag: 1.0.1
-
-CHECKOUT OPTIONS:
-  plant-detect-sdk:
-    :git: "git@github.com:tespkg/plant-detect-sdk-ios.git"
-    :tag: 1.0.1
+    :path: "../PlantDetect/ios/SDKOutput/"
 
 SPEC CHECKSUMS:
-  plant-detect-sdk: 0da161fb3fefa4f0111f63f335fc5e64f37bb5f7
+  plant-detect-sdk: 08fcf3421dcc5485cdc926b32740e67ef5b2114e
 
-PODFILE CHECKSUM: 69bc22536db7c818f4aa0a3c8d821fe3f699b6ce
+PODFILE CHECKSUM: 8013eaee644af6135f2e2cfe451bf784a465b563
 
 COCOAPODS: 1.16.2
