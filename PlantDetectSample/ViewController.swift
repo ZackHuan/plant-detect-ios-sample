@@ -9,17 +9,47 @@ import UIKit
 import PlantDetectSDK
 
 class ViewController: UIViewController {
-
+    
+    let token: String = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlkMWZmNGVmMDcyNzk0ZmY1MzYxYWQzZmQzOTc1Y2YyNTczZGM3MzkifQ.eyJhdF9oYXNoIjoiWUMzejhmZHNHdFhTZW9DZnJVWGtWQSIsImF1ZCI6Im1lZXJhLWFwcHMiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImV4cCI6MTc0NTk5NjU4NSwiaWF0IjoxNzQ1OTEwMTg1LCJpc3MiOiJodHRwczovL3Nzby5zdGFnaW5nLm1hZndyLmdvdi5vbSIsIm1vYmlsZSI6IiIsIm1vYmlsZV92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJyb290Iiwibm9uY2UiOiIiLCJzaWQiOiJZc2R2NkcyOTM3WmR5SzJyVXJTZENLIiwic291cmNlIjoibG9jYWwiLCJzdWIiOiJDaVF3T0dFNE5qZzBZaTFrWWpnNExUUmlOek10T1RCaE9TMHpZMlF4TmpZeFpqVTBOallTQld4dlkyRnMifQ.IX5cpjATO4Tb1A5zZi3t1uBANoGs3lqHWg40Al183pWPLmlx_VK0qN0G6RDlEeI5049PNLhbrg7LVsDxFXuUnzzLToP3QzPa-JVJpEA4qG7H6TgM1EAJ9ygyM_fCz6hYxFG52VER8INbNUbJ3ahmLfD-E4NNpZIUny-veDFgPcLFEwyRGbxns_AHv8eVeYZeChK5lEaJXwFjSM6byJZdJKtHyqTeJLJ6rMWirmerdfc1mXSMy1O-qptizT_EfmGFgb-k8c02uKvIofUG8uCGdT0nkQLVwMJfuWXmOkWvz1DYdOxdGDB4S3CCCLsmQ3zz7FjGKhhxihll170tQP4nqw"
+    let baseUrl: String = "https://apis.staging.mafwr.gov.om/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        PlantEvent.sharedInstance().register(forPlantNotification: self, selector: #selector(onPlantEvent(_:)))
     }
-
+    
+    deinit {
+        PlantEvent.sharedInstance().removeObserver(self)
+    }
+    
+    @objc func onPlantEvent(_ notification: Notification) {
+        print("onPlantEvent triggered with notification: \(notification)")
+        let notificationVC = NotificationViewController()
+        notificationVC.modalPresentationStyle = .fullScreen
+        presentedViewController?.present(notificationVC, animated: true)
+    }
+    
     @IBAction func onClick(_ sender: Any) {
-        let vc = PlantHealthViewController(token: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2YzdlZTAxYmFiYWNjM2ZlZDgwMDk0OTZhY2QxNWY0NWQyZGE3NTEifQ.eyJhdF9oYXNoIjoibXJBZFc4VUJOTl9aWDlDUGtuR3hyQSIsImF1ZCI6Im1lZXJhLWFwcHMiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImV4cCI6MTc0NDk1NjY0NCwiaWF0IjoxNzQ0ODcwMjQ0LCJpc3MiOiJodHRwczovL3Nzby5zdGFnaW5nLm1hZndyLmdvdi5vbSIsIm1vYmlsZSI6IiIsIm1vYmlsZV92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJyb290Iiwibm9uY2UiOiIiLCJzaWQiOiJhRnB3aXVpM2syNFl0UXFrUVU5UkZRIiwic291cmNlIjoibG9jYWwiLCJzdWIiOiJDaVF3T0dFNE5qZzBZaTFrWWpnNExUUmlOek10T1RCaE9TMHpZMlF4TmpZeFpqVTBOallTQld4dlkyRnMifQ.XJEtNQtepADnCS1Gezt67Ngq3rPlsOrDzZ8n6TaXtOHR1N5xWn4yqwNjSNrrsvF-RQblkF73PqsI7Hdz7r6yYbz1up_arv0x3I032zeDrfAuZ6DY_Z-P3II0o5dJ8c9c6W_NguC9O3Cn9pT-wQqc5n1gr68yrNYksz0U84nsbhWH-EpC59QUgkDxq98uVlnqfT0Tir4ujOyZQS1F5jKEpt2c8bCkeHq5xwG-h14JgQSOhoJaVTQX7qMyTnB5CpWk6MWAY7njOXppz1_oFK8Woqf6AkUckJMOuLVFOobJJy8EidIt6RekbXAbhhq1XkTgt_HBAXKPZX_C3-G0QL28OA", baseUrl: "https://apis.staging.mafwr.gov.om/", language: "en")
+        let vc = PlantHealthViewController(
+            token: token,
+            baseUrl: baseUrl,
+            module: "plant",
+            language: "en")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
+    @IBAction func onAnimalClick(_ sender: Any) {
+        let vc = PlantHealthViewController(
+            token: token,
+            baseUrl: baseUrl,
+            module: "farm",
+            language: "en")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
 }
 
