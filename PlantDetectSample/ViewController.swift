@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         let vc = PlantHealthViewController(
             token: token,
             baseUrl: baseUrl,
+            notifCount: 2,
             module: "plant",
             language: "en")
         vc.modalPresentationStyle = .fullScreen
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
         let vc = PlantHealthViewController(
             token: token,
             baseUrl: baseUrl,
+            notifCount: 2,
             module: "farm",
             language: "en")
         vc.modalPresentationStyle = .fullScreen

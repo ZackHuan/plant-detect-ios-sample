@@ -41,7 +41,7 @@ class NotificationViewController: UIViewController {
     }
     
     @objc private func closeButtonTapped() {
-        PlantEvent.sharedInstance().refreshNotification(withCount: 2)
+        PlantEvent.sharedInstance().refreshNotification(withCount: 0)
         dismiss(animated: true)
     }
 }

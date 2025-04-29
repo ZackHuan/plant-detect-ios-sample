@@ -3,33 +3,4 @@
    uuid = "8F246B11-CB45-4127-AA41-A18B82955ECC"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
-         <BreakpointContent
-            uuid = "012EA075-77E0-45A0-B104-0B55624A9356"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            symbolName = "-[RCTEventEmitter sendEventWithName:body:]"
-            moduleName = "">
-            <Locations>
-               <Location
-                  uuid = "012EA075-77E0-45A0-B104-0B55624A9356 - d3da434429f9c4bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RCTEventEmitter sendEventWithName:body:]"
-                  moduleName = "PlantDetectSDK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gamelxy/Documents/code/target/plant/PlantDetect/node_modules/react-native/React/Modules/RCTEventEmitter.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
